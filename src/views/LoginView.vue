@@ -9,7 +9,7 @@
                     <form v-if="!waitingOnVerification" action="#" @submit.prevent="handleLogin">
                         <h1 class="text-3xl font-semibold mb-4">Enter Your Phone number.</h1>
                         <div class="my-4">
-                            <input v-maska data-maska="(+###) #######" v-model="credentials.phone" type="text"  placeholder="(+123) 4567890">
+                            <input v-maska data-maska="(+###) #######" v-model="credentials.phone" type="text"  placeholder="(+123) 4567890" class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-black focus:outline-none">
                         </div>
                         <div class="flex justify-center">
                             <button type="submit" @submit.prevent="handleLogin" class="rounded-md border border-transparent py-2 px-4 text-sm bg-black text-white font-medium">Submit</button>
@@ -20,7 +20,7 @@
                     <form v-else action="#" @submit.prevent="handleVerification">
                         <h1 class="text-3xl font-semibold mb-4">Enter Your Login Code.</h1>
                         <div class="my-4">
-                            <input v-maska data-maska="######" v-model="credentials.login_code" type="text"  placeholder="123456">
+                            <input v-maska data-maska="######" v-model="credentials.login_code" type="text"  placeholder="123456" class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-black focus:outline-none">
                         </div>
                         <div class="flex justify-center">
                             <button type="submit" @submit.prevent="handleVerification" class="rounded-md border border-transparent py-2 px-4 text-sm bg-black text-white font-medium">Verify</button>
@@ -34,7 +34,7 @@
 
 <script setup>
 import { vMaska } from "maska"
-import { onMounted, reactive, ref, computed } from "vue"
+import { onMounted, reactive, ref } from "vue"
 import axios from "axios"
 import { useRouter } from "vue-router"
 
