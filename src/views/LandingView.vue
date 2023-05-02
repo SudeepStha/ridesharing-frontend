@@ -5,9 +5,11 @@
             <div class="bg-white px-4 py-5 sm:p-6">
                 <h1 class="text-3xl font-semibold mb-4 flex justify-center">U-Ride</h1>
                 <div class="flex justify-between">
-                    <button type="submit" class="rounded-md border border-transparent py-2 px-4 text-sm bg-black text-white font-medium">Start Driving</button>
                     <button 
-                    @click="handleFind"
+                    @click="handleStartDriving"
+                    type="submit" class="rounded-md border border-transparent py-2 px-4 text-sm bg-black text-white font-medium">Start Driving</button>
+                    <button 
+                    @click="handleFindARide"
                     type="submit" class="rounded-md border border-transparent py-2 px-4 text-sm bg-black text-white font-medium">Find A Ride</button>
                 </div>
             </div>
@@ -17,11 +19,31 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
-
+import http from '@/helpers/http'
 
 const router = useRouter()
 
-const handleFind = () => {
+const handleStartDriving = () => {
+    http().get('/api/driver')
+        .then((response) => {
+            if(response.data.driver){
+                router.push({
+                    name: 'standby'
+                })
+            }else{
+                router.push({
+                    name: 'driver'
+                })
+            }
+        })
+
+        .catch((error) => {
+            console.error(error);
+        })
+    
+}
+
+const handleFindARide = () => {
     router.push({
         name: 'location'
     })

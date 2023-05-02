@@ -32,6 +32,7 @@ import { useLocationStore } from '@/stores/location'
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import http from "../helpers/http"
 
 const location = useLocationStore()
 const router = useRouter()

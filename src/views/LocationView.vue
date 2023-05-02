@@ -28,7 +28,6 @@
 </template>
 
 <script setup>
-// import { useLocationStore } from '@/stores/location'
 import { useLocationStore } from '@/stores/location'
 import router from '../router';
 
